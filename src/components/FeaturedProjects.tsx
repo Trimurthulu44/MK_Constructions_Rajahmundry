@@ -20,12 +20,12 @@ export const FeaturedProjects: React.FC = () => {
 
   // Curated featured projects pulled from data manifest
   const featuredSlugs = [
-    'modern-residential-house-elevation-rajahmundry-01',
     'luxury-multi-storey-home-rajahmundry-02',
+    'modern-residential-house-elevation-rajahmundry-01',
     'independent-house-front-elevation-rajahmundry',
-    'commercial-arched-building-construction-rajahmundry',
+    'textured-facade-residence-rajahmundry-03',
+    'lakshmi-nilayam-residential-building-rajahmundry-04',
     'custom-wooden-partition-jali-interior-rajahmundry',
-    'rcc-roof-slab-shuttering-construction-rajahmundry',
   ];
 
   const allFeatured: ConstructionImage[] = featuredSlugs
@@ -36,9 +36,11 @@ export const FeaturedProjects: React.FC = () => {
     if (activeFilter === 'all') return true;
     if (activeFilter === 'residential') {
       return (
+        project.category === 'exterior' ||
         project.slug.includes('residential') ||
         project.slug.includes('home') ||
-        project.slug.includes('independent')
+        project.slug.includes('independent') ||
+        project.slug.includes('residence')
       );
     }
     if (activeFilter === 'commercial') {
@@ -171,6 +173,11 @@ export const FeaturedProjects: React.FC = () => {
                     <span className="px-2.5 py-1 rounded-md bg-[#0B1320]/85 backdrop-blur-md text-[#E5A93C] text-[10px] font-bold uppercase tracking-wider border border-white/10">
                       {project.category}
                     </span>
+                    {project.twoInOneRole && (
+                      <span className="px-2.5 py-1 rounded-md bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] text-[10px] font-black uppercase tracking-wider shadow-md">
+                        ✨ 2-in-1 Project
+                      </span>
+                    )}
                   </div>
 
                   {/* Animated Interactive Button on Mouse-Over */}

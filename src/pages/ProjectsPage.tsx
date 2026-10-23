@@ -1,13 +1,28 @@
 import React, { useState } from 'react';
-import { MapPin, Eye, Info, Search, X, Calculator, ArrowRight } from 'lucide-react';
+import { 
+  MapPin, 
+  Eye, 
+  Info, 
+  Search, 
+  X, 
+  Calculator, 
+  ArrowRight, 
+  Sparkles, 
+  Layers, 
+  ShieldCheck, 
+  Hammer, 
+  CheckCircle2, 
+  ArrowLeftRight 
+} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { SITE_IMAGES, ConstructionImage, isProjectCompleted } from '../data/images';
+import { SITE_IMAGES, ConstructionImage, TWO_IN_ONE_PROJECTS, isProjectCompleted } from '../data/images';
 import { useLanguage } from '../context/LanguageContext';
 import { SEOHead } from '../components/SEOHead';
 import { Lightbox } from '../components/Lightbox';
 import { ProjectStamp } from '../components/ProjectStamp';
+import { BeforeAfterSlider } from '../components/BeforeAfterSlider';
 
-type CategoryFilter = 'all' | 'exterior' | 'interior' | 'in-progress' | 'people/team';
+type CategoryFilter = 'all' | 'two-in-one' | 'exterior' | 'in-progress' | 'interior' | 'people/team';
 
 export const ProjectsPage: React.FC = () => {
   const { t } = useLanguage();
@@ -16,7 +31,23 @@ export const ProjectsPage: React.FC = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
+  // 2-in-1 Project Images
+  const twoInOneProject = TWO_IN_ONE_PROJECTS[0];
+  const before2In1Img = SITE_IMAGES.find((img) => img.slug === twoInOneProject.beforeSlug) || SITE_IMAGES[0];
+  const after2In1Img = SITE_IMAGES.find((img) => img.slug === twoInOneProject.afterSlug) || SITE_IMAGES[1];
+
+  // Filtering images
   const filteredImages = SITE_IMAGES.filter((img) => {
+    // When viewing 'all' or 'exterior', settle duplicate raw inspection image neatly into the 2-in-1 showcase
+    // so it doesn't clutter as an isolated duplicate card
+    if ((filter === 'all' || filter === 'exterior') && img.slug === twoInOneProject.beforeSlug && searchQuery.trim() === '') {
+      return false;
+    }
+
+    if (filter === 'two-in-one') {
+      return img.slug === twoInOneProject.afterSlug || img.slug === twoInOneProject.beforeSlug;
+    }
+
     const matchesCategory = filter === 'all' || img.category === filter;
     const matchesSearch = searchQuery.trim() === '' ||
       img.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -29,8 +60,9 @@ export const ProjectsPage: React.FC = () => {
     setLightboxOpen(true);
   };
 
-  const categories: { key: CategoryFilter; label: string }[] = [
+  const categories: { key: CategoryFilter; label: string; icon?: React.ReactNode }[] = [
     { key: 'all', label: t('All Projects', 'అన్ని ప్రాజెక్ట్‌లు') },
+    { key: 'two-in-one', label: t('✨ 2-in-1 Transformations', '✨ 2-ఇన్-1 నిర్మాణాలు'), icon: <Sparkles className="w-3.5 h-3.5 text-[#E5A93C]" /> },
     { key: 'exterior', label: t('Exteriors & Elevations', 'ఎక్స్‌టీరియర్ & ఎలివేషన్') },
     { key: 'in-progress', label: t('Under Construction', 'నిర్మాణంలో ఉన్నవి') },
     { key: 'interior', label: t('Interiors & Woodwork', 'ఇంటీరియర్ & వుడ్‌వర్క్') },
@@ -48,8 +80,11 @@ export const ProjectsPage: React.FC = () => {
       {/* Header Banner */}
       <section className="bg-gradient-to-b from-[#070D16] via-[#0B1320] to-[#0F1D33] text-white pt-36 pb-20 border-b border-[#E5A93C]/20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-[#E5A93C]">
-            {t('Real Workmanship Archive', 'నిర్మాణ గ్యాలరీ')}
+          <span className="text-xs font-bold uppercase tracking-wider text-[#E5A93C] flex items-center justify-center gap-2">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{t('Real Workmanship Archive', 'నిర్మాణ గ్యాలరీ')}</span>
+            <span className="text-white/40">·</span>
+            <span>Rajahmundry & East Godavari</span>
           </span>
           <h1 className="text-3xl sm:text-5xl font-black font-display text-white mt-2 max-w-3xl mx-auto">
             {t(
@@ -70,13 +105,14 @@ export const ProjectsPage: React.FC = () => {
               <button
                 key={cat.key}
                 onClick={() => setFilter(cat.key)}
-                className={`px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 ${
+                className={`flex items-center gap-1.5 px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 ${
                   filter === cat.key
                     ? 'bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] font-black shadow-md'
                     : 'text-stone-300 hover:text-white hover:bg-white/10'
                 }`}
               >
-                {cat.label}
+                {cat.icon}
+                <span>{cat.label}</span>
               </button>
             ))}
           </div>
@@ -106,9 +142,99 @@ export const ProjectsPage: React.FC = () => {
         </div>
       </section>
 
+      {/* Featured 2-in-1 Project Showcase: Settle Same-Building Lifecycle */}
+      {(filter === 'all' || filter === 'two-in-one') && searchQuery.trim() === '' && (
+        <section className="bg-white border-b border-stone-200 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-br from-[#0B1320] via-[#122238] to-[#0B1320] rounded-3xl p-6 sm:p-10 text-white shadow-2xl border-2 border-[#E5A93C]/40">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                
+                {/* Left Description */}
+                <div className="lg:col-span-5 space-y-4">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E5A93C]/20 border border-[#E5A93C]/40 text-[#E5A93C] text-xs font-bold uppercase tracking-wider">
+                    <Sparkles className="w-3.5 h-3.5 text-[#E5A93C]" />
+                    <span>{t('2-in-1 Project Transformation', '2-ఇన్-1 అసలైన నిర్మాణం')}</span>
+                  </div>
+
+                  <h2 className="text-2xl sm:text-3xl font-black font-display text-white">
+                    {t(twoInOneProject.title, twoInOneProject.teluguTitle)}
+                  </h2>
+
+                  <p className="text-xs sm:text-sm text-stone-300 leading-relaxed">
+                    {t(twoInOneProject.story, twoInOneProject.teluguStory)}
+                  </p>
+
+                  {/* Specs Grid */}
+                  <div className="grid grid-cols-2 gap-3 pt-2">
+                    {twoInOneProject.specs.map((spec, i) => (
+                      <div key={i} className="p-2.5 rounded-xl bg-white/5 border border-white/10">
+                        <div className="text-[10px] text-[#E5A93C] font-semibold uppercase">{spec.label}</div>
+                        <div className="text-xs font-bold text-white mt-0.5">{spec.value}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Supervision Guarantee */}
+                  <div className="flex items-center gap-2 pt-2 text-xs text-stone-300 border-t border-white/10">
+                    <ShieldCheck className="w-4 h-4 text-[#E5A93C] shrink-0" />
+                    <span>{t('Zero Subcontracting · Direct Supervision by Gedala Laxman Rao', 'సబ్‌కాంట్రాక్ట్ లేకుండా గెడల లక్ష్మణరావు గారి ప్రత్యక్ష పర్యవేక్షణ')}</span>
+                  </div>
+                </div>
+
+                {/* Right Interactive Slider */}
+                <div className="lg:col-span-7">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/20 bg-black/40">
+                    <BeforeAfterSlider
+                      beforeImage={before2In1Img}
+                      afterImage={after2In1Img}
+                      beforeLabel={t('Before: Structural RCC Frame & Beam Alignment', 'నిర్మాణంలో: రా ఫ్రేమింగ్ & బీమ్ అమరిక')}
+                      afterLabel={t('After: Completed 3-Storey Elevation with Ganesha Art', 'పూర్తయిన తర్వాత: 3 అంతస్తుల మోడ్రన్ ఎలివేషన్')}
+                    />
+                  </div>
+                  <div className="mt-3 flex items-center justify-between text-[11px] text-stone-400">
+                    <span className="flex items-center gap-1.5 text-[#E5A93C]">
+                      <ArrowLeftRight className="w-3.5 h-3.5" />
+                      {t('Drag slider left/right to compare same building', 'స్లైడర్‌ను జరిపి చూడవచ్చు')}
+                    </span>
+                    <span className="font-mono text-stone-400">Rajahmundry Site</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Gallery Grid */}
       <section className="py-20 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Section Subtitle */}
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-stone-200">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-black font-display text-[#0B1320]">
+                {filter === 'two-in-one'
+                  ? t('2-in-1 Project Details', '2-ఇన్-1 ప్రాజెక్ట్ వివరాలు')
+                  : t('Curated Project Archive', 'ప్రాజెక్ట్ గ్యాలరీ')}
+              </h2>
+              <p className="text-xs text-stone-500 mt-0.5">
+                {t(
+                  `Displaying ${filteredImages.length} authentic photographs, sorted with premier completed elevations first.`,
+                  `${filteredImages.length} అసలైన నిర్మాణ ఫోటోలు, అందమైన ఎలివేషన్‌లు మొదటి ప్రాధాన్యతగా చూపించబడుతున్నాయి.`
+                )}
+              </p>
+            </div>
+            {filter !== 'all' && (
+              <button
+                onClick={() => setFilter('all')}
+                className="text-xs text-[#D97706] font-bold hover:underline"
+              >
+                {t('View All (Reset)', 'అన్నీ చూడండి')}
+              </button>
+            )}
+          </div>
+
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
             {filteredImages.map((img, idx) => (
               <div
@@ -129,8 +255,16 @@ export const ProjectsPage: React.FC = () => {
                     }}
                   />
 
+                  {/* 2-in-1 Badge if applicable */}
+                  {img.twoInOneRole && (
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] text-[10px] font-black uppercase tracking-wider shadow-lg flex items-center gap-1 border border-white/40">
+                      <Sparkles className="w-3 h-3" />
+                      <span>{img.twoInOneRole === 'after' ? '2-in-1 Completed' : '2-in-1 Raw Frame'}</span>
+                    </div>
+                  )}
+
                   {/* Exclude / Inspection Note Badge if applicable */}
-                  {img.excludeReason && (
+                  {img.excludeReason && !img.twoInOneRole && (
                     <div className="absolute top-3 left-3 px-2 py-1 bg-amber-900/80 backdrop-blur-sm rounded text-[10px] text-amber-200 font-mono flex items-center gap-1 border border-amber-500/30">
                       <Info className="w-3 h-3 shrink-0" />
                       <span>On-Site Inspection Archive</span>

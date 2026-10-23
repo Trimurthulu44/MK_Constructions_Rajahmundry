@@ -18,7 +18,9 @@ import {
   Video,
   CheckCircle2,
   Calculator,
-  Building2
+  Building2,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { SITE_CONFIG } from '../data/site';
 import { HERO_SLIDES, FOUNDER_IMAGE, SITE_IMAGES, isProjectCompleted } from '../data/images';
@@ -34,19 +36,29 @@ import { CostEstimator } from '../components/CostEstimator';
 export const HomePage: React.FC = () => {
   const { t } = useLanguage();
   const [heroIndex, setHeroIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // Before/After comparison images
-  const beforeImg = SITE_IMAGES.find((img) => img.slug === 'red-brick-masonry-house-construction-rajahmundry') || SITE_IMAGES[0];
-  const afterImg = SITE_IMAGES.find((img) => img.slug === 'luxury-multi-storey-home-rajahmundry-02') || SITE_IMAGES[1];
+  // 2-in-1 Authentic Before/After comparison images (exact matching Rajahmundry residence)
+  const beforeImg = SITE_IMAGES.find((img) => img.slug === 'structural-framing-elevation-inspection-rajahmundry') || SITE_IMAGES[0];
+  const afterImg = SITE_IMAGES.find((img) => img.slug === 'modern-residential-house-elevation-rajahmundry-01') || SITE_IMAGES[1];
 
-  // Rotate hero slides every 6 seconds
+  // Rotate hero slides every 6 seconds with hover-pause support
   useEffect(() => {
+    if (isPaused) return;
     const timer = setInterval(() => {
       setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [isPaused]);
+
+  const prevSlide = () => {
+    setHeroIndex((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+  };
+
+  const nextSlide = () => {
+    setHeroIndex((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
 
   const faqSchema = {
     '@context': 'https://schema.org',
@@ -71,21 +83,25 @@ export const HomePage: React.FC = () => {
       />
 
       {/* 1. Hero Section: Slideshow with Ken Burns effect & confident typography */}
-      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#0C2B2B]">
-        {/* Background Slides */}
+      <section 
+        className="relative min-h-[94vh] flex items-center justify-center overflow-hidden bg-[#0C2B2B]"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+      >
+        {/* Background Slides with Ken Burns Animation & Smooth Crossfade */}
         {HERO_SLIDES.map((slide, idx) => (
           <div
             key={slide.slug}
             className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-              idx === heroIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10'
+              idx === heroIndex ? 'opacity-100 z-0' : 'opacity-0 -z-10 pointer-events-none'
             }`}
           >
             <img
               src={slide.src}
               srcSet={slide.srcSet}
               alt={slide.alt}
-              className={`w-full h-full object-cover transition-transform duration-[6000ms] ease-out ${
-                idx === heroIndex ? 'scale-105' : 'scale-100'
+              className={`w-full h-full object-cover transition-transform duration-[7000ms] ease-out ${
+                idx === heroIndex ? 'scale-108' : 'scale-100'
               }`}
               style={{
                 backgroundImage: `url(${slide.blurDataUrl})`,
@@ -95,6 +111,38 @@ export const HomePage: React.FC = () => {
             <div className="absolute inset-0 scrim-hero" />
           </div>
         ))}
+
+        {/* Previous / Next Slide Arrow Controls */}
+        <button
+          onClick={prevSlide}
+          aria-label="Previous home photo"
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-[#E5A93C] text-white hover:text-[#0B1320] border border-white/20 hover:border-[#E5A93C] flex items-center justify-center backdrop-blur-md transition-all shadow-xl active:scale-95 group"
+        >
+          <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-0.5 transition-transform" />
+        </button>
+        <button
+          onClick={nextSlide}
+          aria-label="Next home photo"
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 hover:bg-[#E5A93C] text-white hover:text-[#0B1320] border border-white/20 hover:border-[#E5A93C] flex items-center justify-center backdrop-blur-md transition-all shadow-xl active:scale-95 group"
+        >
+          <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-0.5 transition-transform" />
+        </button>
+
+        {/* Floating Active Project Badge (Bottom Left) */}
+        <div className="absolute bottom-6 left-4 sm:left-8 z-20 hidden md:flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-white shadow-2xl">
+          <div className="w-2.5 h-2.5 rounded-full bg-[#E5A93C] animate-pulse" />
+          <div className="text-left">
+            <div className="text-[10px] uppercase font-bold text-[#E5A93C] tracking-wider">
+              {t('Featured Architecture', 'ప్రధాన భవన ఎలివేషన్')} · Rajahmundry
+            </div>
+            <div className="text-xs font-bold text-white max-w-[260px] truncate">
+              {HERO_SLIDES[heroIndex]?.title}
+            </div>
+          </div>
+          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 text-stone-300 ml-2">
+            {heroIndex + 1}/{HERO_SLIDES.length}
+          </span>
+        </div>
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center text-white">
@@ -170,17 +218,22 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          {/* Slide Indicator Dots */}
-          <div className="mt-12 flex items-center justify-center gap-2">
-            {HERO_SLIDES.map((_, i) => (
+          {/* Quick Select Slide Navigation Pills */}
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+            {HERO_SLIDES.map((slide, i) => (
               <button
-                key={i}
+                key={slide.slug}
                 onClick={() => setHeroIndex(i)}
-                aria-label={`Switch to hero photo ${i + 1}`}
-                className={`h-1.5 transition-all duration-300 rounded-full ${
-                  i === heroIndex ? 'w-8 bg-[#C8A24A]' : 'w-2 bg-white/40 hover:bg-white/70'
+                aria-label={`Switch to ${slide.title}`}
+                className={`group flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md transition-all ${
+                  i === heroIndex
+                    ? 'bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] font-black shadow-lg scale-105'
+                    : 'bg-black/40 hover:bg-black/60 text-stone-300 hover:text-white border border-white/15'
                 }`}
-              />
+              >
+                <span className={`w-1.5 h-1.5 rounded-full ${i === heroIndex ? 'bg-[#0B1320]' : 'bg-[#E5A93C]'}`} />
+                <span className="max-w-[130px] sm:max-w-none truncate">{slide.title}</span>
+              </button>
             ))}
           </div>
         </div>
@@ -495,24 +548,26 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Before & After Interactive Showcase */}
-      <section className="py-20 bg-white border-t border-stone-200">
+      {/* 5. Direct Proof of Workmanship: Authentic 2-in-1 Transformation */}
+      <section className="py-20 bg-stone-100 border-t border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#D97706]">
-                {t('Workmanship Transparency', 'పనితీరు & నాణ్యత')}
+              <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-1.5">
+                <span>{t('2-in-1 True Transformation', '2-ఇన్-1 అసలైన నిర్మాణం')}</span>
+                <span className="text-stone-400">·</span>
+                <span className="text-stone-600 font-mono text-[11px]">Same Rajahmundry Site</span>
               </span>
               <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0B1320] text-balance">
                 {t(
-                  'From Structural Masonry to Elegant Modern Elevation',
-                  'పునాది ఇటుక పని నుంచి అందమైన ఎలివేషన్ వరకు'
+                  'From Structural Concrete Framing to Designer 3-Storey Elevation',
+                  'రా ఫ్రేమింగ్ & పిల్లర్ల దశ నుండి పూర్తయిన అందమైన ఇల్లు'
                 )}
               </h2>
               <p className="text-sm text-stone-600 leading-relaxed">
                 {t(
-                  'Drag the slider to compare our high-density red brick masonry and RCC slab structure with the finished contemporary home elevation in Rajahmundry.',
-                  'స్లైడర్‌ను జరిపి మా నిర్మాణం మరియు పూర్తయిన భవన ఎలివేషన్ నాణ్యతను పరిశీలించండి.'
+                  'Witness the complete construction journey of this identical Rajahmundry residence: from structural beam alignment and raw plaster inspection to the finished elevation with custom Lord Ganesha relief.',
+                  'ఒకే భవనం పునాది పిల్లర్లు మరియు రా ఫ్రేమింగ్ దశ నుండి తుది ఎలివేషన్ పూర్తయ్యే వరకు వచ్చిన అద్భుతమైన మార్పును స్లైడర్ ద్వారా స్వయంగా చూడండి.'
                 )}
               </p>
               <div className="space-y-3 pt-2">
@@ -520,10 +575,10 @@ export const HomePage: React.FC = () => {
                   <Hammer className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-sm font-bold text-[#0B1320]">
-                      {t('Godavari Kiln-Fired Bricks', 'నాణ్యమైన గోదావరి ఇటుకలు')}
+                      {t('Structural Alignment & Inspection', 'ఖచ్చితమైన పిల్లర్ల & బీమ్ అమరిక')}
                     </h4>
                     <p className="text-xs text-stone-600">
-                      High thermal insulation and zero hollow shrinkage cracks.
+                      Fe-550D TMT rebar, 53G OPC cement, and laser-straight lintel levels.
                     </p>
                   </div>
                 </div>
@@ -531,10 +586,10 @@ export const HomePage: React.FC = () => {
                   <ShieldCheck className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-sm font-bold text-[#0B1320]">
-                      {t('Fe-550D Certified Rebar', 'సర్టిఫైడ్ ఐరన్ & సిమెంట్')}
+                      {t('Turnkey Designer Elevation Handover', 'నాణ్యమైన ఎలివేషన్ ముగింపు')}
                     </h4>
                     <p className="text-xs text-stone-600">
-                      Earthquake-resistant RCC columns and 21-day water curing.
+                      Weatherproof exterior coatings, architectural louvers, and bespoke stone Ganesha art.
                     </p>
                   </div>
                 </div>
@@ -545,14 +600,17 @@ export const HomePage: React.FC = () => {
               <BeforeAfterSlider
                 beforeImage={beforeImg}
                 afterImage={afterImg}
-                beforeLabel="Under Construction (Brickwork)"
-                afterLabel="Completed Luxury Home"
+                beforeLabel={t('Before: Structural RCC Frame & Alignment', 'నిర్మాణంలో: రా ఫ్రేమింగ్ & బీమ్ అమరిక')}
+                afterLabel={t('After: Completed 3-Storey Elevation (Ganesha Motif)', 'పూర్తయిన తర్వాత: 3 అంతస్తుల మోడ్రన్ ఎలివేషన్')}
               />
-              <p className="text-xs text-stone-500 text-center mt-3">
-                {t(
-                  'Interactive before-and-after view: drag the center divider left or right.',
-                  'స్లైడర్ బార్‌ను ఇరువైపులా లాగి చూడవచ్చు.'
-                )}
+              <p className="text-xs text-stone-500 text-center mt-3 flex items-center justify-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
+                <span>
+                  {t(
+                    'Interactive 2-in-1 transformation: drag the center divider to compare before & after on the same building.',
+                    'ఒకే భవనం యొక్క నిర్మాణ దశ మరియు పూర్తయిన రూపాన్ని సరిపోల్చడానికి స్లైడర్‌ను జరపండి.'
+                  )}
+                </span>
               </p>
             </div>
           </div>
