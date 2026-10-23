@@ -27,7 +27,7 @@ export const AboutPage: React.FC = () => {
   const { t } = useLanguage();
 
   const finishedProjectImg = SITE_IMAGES.find(
-    (img) => img.slug === 'modern-residential-house-elevation-rajahmundry-01'
+    (img) => img.slug === 'multi-storey-residential-apartment-complex-rajahmundry'
   ) || SITE_IMAGES[0];
 
   const founderSchema = {
@@ -458,7 +458,10 @@ export const AboutPage: React.FC = () => {
                   {/* Below-corner card footer with stamper at the edge */}
                   <div className="p-4 flex items-center justify-between gap-3 bg-[#070D16]">
                     <div>
-                      <div className="text-xs font-bold text-white">MK Constructions Signature Build</div>
+                      <div className="text-xs font-bold text-white">{t('MK Constructions Signature Build', 'ఎంకే కన్‌స్ట్రక్షన్స్ సిగ్నేచర్ ప్రాజెక్ట్')}</div>
+                      <div className="text-[11px] text-stone-300 font-medium truncate max-w-[240px]">
+                        {finishedProjectImg.title}
+                      </div>
                       <div className="text-[11px] text-[#E5A93C] flex items-center gap-1 mt-0.5 font-medium">
                         <MapPin className="w-3 h-3" />
                         <span>Rajahmundry, Andhra Pradesh</span>
