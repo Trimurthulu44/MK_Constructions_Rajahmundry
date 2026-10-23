@@ -11,11 +11,8 @@ import {
   ListFilter, 
   ShieldCheck, 
   Hammer, 
-  Building2, 
   CheckCircle2, 
-  Phone,
-  Home,
-  Layers
+  Phone
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { COMPLETED_PROJECTS, ConstructionImage } from '../data/images';
@@ -25,76 +22,30 @@ import { SEOHead } from '../components/SEOHead';
 import { Lightbox } from '../components/Lightbox';
 import { ProjectStamp } from '../components/ProjectStamp';
 
-type ProjectFilter = 'all' | 'residential' | 'apartment' | 'commercial' | 'interior';
 type ViewMode = 'grid' | 'list';
 
 export const ProjectsPage: React.FC = () => {
   const { t } = useLanguage();
-  const [filter, setFilter] = useState<ProjectFilter>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState(0);
 
-  // Filter completed projects - neatly displayed one by one
+  // All completed projects simply visible one by one
   const filteredProjects = COMPLETED_PROJECTS.filter((proj) => {
-    let matchesFilter = true;
-    if (filter === 'residential') {
-      matchesFilter = proj.projectType === 'residential' || (!proj.projectType && proj.category === 'exterior');
-    } else if (filter === 'apartment') {
-      matchesFilter = proj.projectType === 'apartment' || proj.slug.includes('apartment');
-    } else if (filter === 'commercial') {
-      matchesFilter = proj.projectType === 'commercial' || proj.slug.includes('commercial') || proj.slug.includes('mahal');
-    } else if (filter === 'interior') {
-      matchesFilter = proj.category === 'interior';
-    }
-
     const matchesSearch = searchQuery.trim() === '' ||
       proj.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       proj.alt.toLowerCase().includes(searchQuery.toLowerCase()) ||
       proj.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
       (proj.scope && proj.scope.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    return matchesFilter && matchesSearch;
+    return matchesSearch;
   });
 
   const openLightbox = (index: number) => {
     setLightboxIndex(index);
     setLightboxOpen(true);
   };
-
-  const filterTabs: { key: ProjectFilter; label: string; icon: React.ReactNode; count: number }[] = [
-    { 
-      key: 'all', 
-      label: t('All Completed Projects', 'అన్ని ప్రాజెక్ట్‌లు'), 
-      icon: <Sparkles className="w-3.5 h-3.5" />,
-      count: COMPLETED_PROJECTS.length 
-    },
-    { 
-      key: 'residential', 
-      label: t('Independent Houses & Villas', 'వ్యక్తిగత ఇళ్లు & విల్లాలు'), 
-      icon: <Home className="w-3.5 h-3.5" />,
-      count: COMPLETED_PROJECTS.filter(p => p.projectType === 'residential' || (!p.projectType && p.category === 'exterior')).length 
-    },
-    { 
-      key: 'apartment', 
-      label: t('Apartment Complexes', 'అపార్ట్‌మెంట్లు'), 
-      icon: <Building2 className="w-3.5 h-3.5" />,
-      count: COMPLETED_PROJECTS.filter(p => p.projectType === 'apartment' || p.slug.includes('apartment')).length 
-    },
-    { 
-      key: 'commercial', 
-      label: t('Commercial & Restaurants', 'వాణిజ్య భవనాలు & రెస్టారెంట్లు'), 
-      icon: <Layers className="w-3.5 h-3.5" />,
-      count: COMPLETED_PROJECTS.filter(p => p.projectType === 'commercial' || p.slug.includes('commercial') || p.slug.includes('mahal') || p.slug.includes('barkas')).length 
-    },
-    { 
-      key: 'interior', 
-      label: t('Interior Woodwork', 'ఇంటీరియర్ & వుడ్‌వర్క్'), 
-      icon: <Hammer className="w-3.5 h-3.5" />,
-      count: COMPLETED_PROJECTS.filter(p => p.category === 'interior').length 
-    },
-  ];
 
   return (
     <>
@@ -127,31 +78,8 @@ export const ProjectsPage: React.FC = () => {
             )}
           </p>
 
-          {/* Structured Category Filters */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2 p-1.5 bg-[#070D16]/90 backdrop-blur-md rounded-2xl max-w-4xl mx-auto border border-white/10 shadow-lg">
-            {filterTabs.map((tab) => (
-              <button
-                key={tab.key}
-                onClick={() => setFilter(tab.key)}
-                className={`flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold rounded-xl transition-all whitespace-nowrap shrink-0 ${
-                  filter === tab.key
-                    ? 'bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] font-black shadow-md'
-                    : 'text-stone-300 hover:text-white hover:bg-white/10'
-                }`}
-              >
-                {tab.icon}
-                <span>{tab.label}</span>
-                <span className={`text-[10px] font-mono px-1.5 py-0.5 rounded ${
-                  filter === tab.key ? 'bg-black/20 text-[#0B1320]' : 'bg-white/10 text-stone-300'
-                }`}>
-                  {tab.count}
-                </span>
-              </button>
-            ))}
-          </div>
-
           {/* Search & Layout View Controls */}
-          <div className="mt-6 max-w-2xl mx-auto flex items-center gap-3">
+          <div className="mt-8 max-w-2xl mx-auto flex items-center gap-3">
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-stone-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
@@ -211,14 +139,12 @@ export const ProjectsPage: React.FC = () => {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 mb-10 border-b border-stone-200 gap-4">
             <div>
               <h2 className="text-xl sm:text-2xl font-black font-display text-[#0B1320]">
-                {filter === 'all' 
-                  ? t('Completed Turnkey Projects', 'పూర్తయిన నిర్మాణ ప్రాజెక్ట్‌లు')
-                  : filterTabs.find(t => t.key === filter)?.label}
+                {t('Completed Turnkey Projects', 'పూర్తయిన నిర్మాణ ప్రాజెక్ట్‌లు')}
               </h2>
               <p className="text-xs text-stone-500 mt-1">
                 {t(
-                  `Displaying ${filteredProjects.length} finished projects neatly structured one by one.`,
-                  `${filteredProjects.length} పూర్తయిన ప్రాజెక్ట్‌లు ఒకదాని తర్వాత ఒకటి చూపించబడుతున్నాయి.`
+                  `Displaying all ${filteredProjects.length} finished projects neatly structured one by one.`,
+                  `మొత్తం ${filteredProjects.length} పూర్తయిన ప్రాజెక్ట్‌లు ఒకదాని తర్వాత ఒకటి చూపించబడుతున్నాయి.`
                 )}
               </p>
             </div>
@@ -228,14 +154,6 @@ export const ProjectsPage: React.FC = () => {
                 <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
                 100% Completed Projects
               </span>
-              {filter !== 'all' && (
-                <button
-                  onClick={() => { setFilter('all'); setSearchQuery(''); }}
-                  className="text-xs text-[#D97706] font-bold hover:underline"
-                >
-                  {t('Reset Filter', 'రీసెట్ చేయండి')}
-                </button>
-              )}
             </div>
           </div>
 
