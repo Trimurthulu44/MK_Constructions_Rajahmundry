@@ -22,10 +22,10 @@ export const FeaturedProjects: React.FC = () => {
   const featuredSlugs = [
     'luxury-multi-storey-home-rajahmundry-02',
     'modern-residential-house-elevation-rajahmundry-01',
+    'multi-storey-residential-apartment-complex-rajahmundry',
+    'deluxe-mahal-commercial-event-hall-rajahmundry',
+    'modern-green-accent-independent-house-rajahmundry',
     'independent-house-front-elevation-rajahmundry',
-    'textured-facade-residence-rajahmundry-03',
-    'lakshmi-nilayam-residential-building-rajahmundry-04',
-    'custom-wooden-partition-jali-interior-rajahmundry',
   ];
 
   const allFeatured: ConstructionImage[] = featuredSlugs
@@ -44,7 +44,13 @@ export const FeaturedProjects: React.FC = () => {
       );
     }
     if (activeFilter === 'commercial') {
-      return project.slug.includes('commercial') || project.slug.includes('rcc');
+      return (
+        project.projectType === 'commercial' ||
+        project.projectType === 'apartment' ||
+        project.slug.includes('commercial') ||
+        project.slug.includes('apartment') ||
+        project.slug.includes('mahal')
+      );
     }
     if (activeFilter === 'interior') {
       return project.category === 'interior';
