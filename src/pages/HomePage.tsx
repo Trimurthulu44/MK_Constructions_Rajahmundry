@@ -128,22 +128,6 @@ export const HomePage: React.FC = () => {
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-0.5 transition-transform" />
         </button>
 
-        {/* Floating Active Project Badge (Bottom Left) */}
-        <div className="absolute bottom-6 left-4 sm:left-8 z-20 hidden md:flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-black/60 backdrop-blur-md border border-white/15 text-white shadow-2xl">
-          <div className="w-2.5 h-2.5 rounded-full bg-[#E5A93C] animate-pulse" />
-          <div className="text-left">
-            <div className="text-[10px] uppercase font-bold text-[#E5A93C] tracking-wider">
-              {t('Featured Architecture', 'ప్రధాన భవన ఎలివేషన్')} · Rajahmundry
-            </div>
-            <div className="text-xs font-bold text-white max-w-[260px] truncate">
-              {HERO_SLIDES[heroIndex]?.title}
-            </div>
-          </div>
-          <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-white/10 text-stone-300 ml-2">
-            {heroIndex + 1}/{HERO_SLIDES.length}
-          </span>
-        </div>
-
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center text-white">
           {/* Highlighted Big Official Circular Logo */}
@@ -218,22 +202,19 @@ export const HomePage: React.FC = () => {
             </Link>
           </div>
 
-          {/* Quick Select Slide Navigation Pills */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
+          {/* Minimal Slide Indicator Dots */}
+          <div className="mt-8 flex items-center justify-center gap-2">
             {HERO_SLIDES.map((slide, i) => (
               <button
                 key={slide.slug}
                 onClick={() => setHeroIndex(i)}
-                aria-label={`Switch to ${slide.title}`}
-                className={`group flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold backdrop-blur-md transition-all ${
+                aria-label={`Go to slide ${i + 1}`}
+                className={`transition-all rounded-full ${
                   i === heroIndex
-                    ? 'bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] font-black shadow-lg scale-105'
-                    : 'bg-black/40 hover:bg-black/60 text-stone-300 hover:text-white border border-white/15'
+                    ? 'w-7 sm:w-8 h-2 bg-[#E5A93C] shadow-lg'
+                    : 'w-2 h-2 bg-white/40 hover:bg-white/70'
                 }`}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full ${i === heroIndex ? 'bg-[#0B1320]' : 'bg-[#E5A93C]'}`} />
-                <span className="max-w-[130px] sm:max-w-none truncate">{slide.title}</span>
-              </button>
+              />
             ))}
           </div>
         </div>

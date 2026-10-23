@@ -84,9 +84,9 @@ export const ProjectsPage: React.FC = () => {
     },
     { 
       key: 'commercial', 
-      label: t('Commercial & Event Halls', 'వాణిజ్య భవనాలు'), 
+      label: t('Commercial & Restaurants', 'వాణిజ్య భవనాలు & రెస్టారెంట్లు'), 
       icon: <Layers className="w-3.5 h-3.5" />,
-      count: COMPLETED_PROJECTS.filter(p => p.projectType === 'commercial' || p.slug.includes('commercial') || p.slug.includes('mahal')).length 
+      count: COMPLETED_PROJECTS.filter(p => p.projectType === 'commercial' || p.slug.includes('commercial') || p.slug.includes('mahal') || p.slug.includes('barkas')).length 
     },
     { 
       key: 'interior', 
@@ -290,8 +290,11 @@ export const ProjectsPage: React.FC = () => {
                   <div className="p-5 flex-1 flex flex-col justify-between">
                     <div>
                       <div className="flex items-center justify-between text-[11px] text-[#D97706] font-bold uppercase tracking-wider mb-1.5">
-                        <span>Project #{String(idx + 1).padStart(2, '0')}</span>
-                        <span className="text-stone-400 capitalize">{project.projectType || project.category}</span>
+                        <span className="capitalize">{project.projectType || project.category}</span>
+                        <span className="text-stone-400 capitalize flex items-center gap-1">
+                          <MapPin className="w-3 h-3 text-[#E5A93C]" />
+                          {project.location}
+                        </span>
                       </div>
 
                       <h3 className="text-base font-bold text-[#0B1320] font-display leading-snug group-hover:text-[#D97706] transition-colors">
@@ -352,8 +355,10 @@ export const ProjectsPage: React.FC = () => {
 
                   {/* Right Column: Detailed Breakdown */}
                   <div className="lg:col-span-7 space-y-3">
-                    <div className="flex items-center justify-between text-xs text-stone-400 font-mono">
-                      <span className="text-[#E5A93C] font-bold">PROJECT #{String(idx + 1).padStart(2, '0')}</span>
+                    <div className="flex items-center justify-between text-xs text-stone-400">
+                      <span className="text-[#E5A93C] font-bold uppercase tracking-wider text-[11px]">
+                        {project.projectType || project.category}
+                      </span>
                       <span className="flex items-center gap-1 text-stone-600">
                         <MapPin className="w-3.5 h-3.5 text-[#E5A93C]" />
                         {project.location}

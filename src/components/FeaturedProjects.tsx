@@ -24,6 +24,7 @@ export const FeaturedProjects: React.FC = () => {
     'modern-residential-house-elevation-rajahmundry-01',
     'multi-storey-residential-apartment-complex-rajahmundry',
     'deluxe-mahal-commercial-event-hall-rajahmundry',
+    'barkas-arabian-kitchens-restaurant-rajahmundry',
     'modern-green-accent-independent-house-rajahmundry',
     'independent-house-front-elevation-rajahmundry',
   ];
@@ -66,7 +67,7 @@ export const FeaturedProjects: React.FC = () => {
   const filterButtons: { key: ProjectFilter; label: string; icon: React.ReactNode }[] = [
     { key: 'all', label: t('All Featured', 'అన్నీ'), icon: <Sparkles className="w-3.5 h-3.5" /> },
     { key: 'residential', label: t('Independent Houses & Villas', 'వ్యక్తిగత ఇళ్లు'), icon: <Home className="w-3.5 h-3.5" /> },
-    { key: 'commercial', label: t('Commercial & Structural', 'వాణిజ్య & సివిల్'), icon: <Building2 className="w-3.5 h-3.5" /> },
+    { key: 'commercial', label: t('Commercial & Restaurants', 'వాణిజ్య & రెస్టారెంట్లు'), icon: <Building2 className="w-3.5 h-3.5" /> },
     { key: 'interior', label: t('Interior Woodwork', 'ఇంటీరియర్'), icon: <Hammer className="w-3.5 h-3.5" /> },
   ];
 

@@ -101,15 +101,15 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "scope": "G+4 Multi-Storey Residential Complex · Glass Balconies & Textured Plastering"
   },
 
-  // 4. Deluxe Mahal Grand Commercial Event Hall (NEW)
+  // 4. Deluxe Mahal Commercial Restaurant & Dining Hall (NEW)
   {
     "slug": "deluxe-mahal-commercial-event-hall-rajahmundry",
     "originalFile": "deluxe-mahal-grand-hall.jpg",
-    "title": "Deluxe Mahal Grand Commercial Event Hall",
+    "title": "Deluxe Mahal Commercial Restaurant & Dining Hall",
     "location": "Rajahmundry",
     "category": "exterior",
     "projectType": "commercial",
-    "alt": "Deluxe Mahal event and function hall with illuminated arched colonnade facade and neon signage in Rajahmundry",
+    "alt": "Deluxe Mahal commercial restaurant and grand dining hall with illuminated arched colonnade facade in Rajahmundry",
     "width": 1024,
     "height": 768,
     "aspectRatio": 1.33,
@@ -120,8 +120,31 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "isHeroCandidate": true,
     "isFounderPortrait": false,
     "excludeReason": null,
-    "statusBadge": "Commercial Architecture",
-    "scope": "Turnkey Commercial Event Hall · Grand Arched Colonnade & Illuminated Facade"
+    "statusBadge": "Commercial Restaurant",
+    "scope": "Turnkey Commercial Restaurant & Grand Dining Colonnade · Full Structural & Facade Execution"
+  },
+
+  // 5. Barkas Arabian Kitchens Restaurant (NEW)
+  {
+    "slug": "barkas-arabian-kitchens-restaurant-rajahmundry",
+    "originalFile": "barkas-arabian-kitchens-restaurant.jpg",
+    "title": "Barkas Arabian Kitchens Restaurant",
+    "location": "Rajahmundry",
+    "category": "exterior",
+    "projectType": "commercial",
+    "alt": "Barkas Arabian Kitchens restaurant commercial building with decorative entrance arch, lighting and neon branding in Rajahmundry",
+    "width": 405,
+    "height": 720,
+    "aspectRatio": 0.56,
+    "src": "/images/optimized/barkas-arabian-kitchens-restaurant-rajahmundry.webp",
+    "srcSet": "/images/optimized/barkas-arabian-kitchens-restaurant-rajahmundry-480.webp 480w, /images/optimized/barkas-arabian-kitchens-restaurant-rajahmundry.webp 720w",
+    "widths": [480, 720],
+    "blurDataUrl": "data:image/webp;base64,UklGRi4BAABXRUJQVlA4ICIBAABwBgCdASoUACQAPtFiqlAoJSOipWmZABoJYgCdMvB2j+yidwPXPrIY7rT8e7cLbWDvSvN6Bd8LHS9jtMQA/vfwnLaoVDkJJi87PKxCaekbUzbaScvg1tYu9zT2gElFb01Kfr8p7sv5WRnLZFRis+VwAH6wwNXUEV8gzDO36UD+dhq/hVilXUVrsxfDxJzGZM4cxniacbQYSPOFEdGbb79tAW3x9OHLnGh627RK1cLfePA45dyn/EtnNitHcDaTfo5GH27DZqWBIXncjG+6FpxifGRfHqGibLppsQA2Vcm+xlMqhcy3PQuSu4vmLFF/fpgCDtB1dR6fhfgEIl3o5Le5wzKmdz/Kfa4incFbEUII9PxrUQY+jT0jPFMxSZM/H4kgAA==",
+    "isHeroCandidate": false,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Commercial Restaurant",
+    "scope": "Turnkey Restaurant Execution · Arabian Theme Entrance Arch, Commercial Kitchen & Facade Lighting"
   },
 
   // 5. Modern Independent House (Green & Yellow Accents) (NEW)
