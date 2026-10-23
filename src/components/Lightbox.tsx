@@ -127,42 +127,15 @@ export const Lightbox: React.FC<LightboxProps> = ({
       {/* Bottom Caption Bar */}
       <div className="px-6 py-4 bg-[#081E1E]/90 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
         <div>
-          <div className="flex items-center justify-center sm:justify-start gap-2 mb-1">
-            <h3 className="text-white text-base font-bold font-display">
-              {currentImage.title}
-            </h3>
-            {currentImage.twoInOneRole && (
-              <span className="px-2 py-0.5 rounded text-[10px] font-black uppercase bg-[#E5A93C]/20 text-[#E5A93C] border border-[#E5A93C]/30">
-                2-in-1 Project
-              </span>
-            )}
-          </div>
+          <h3 className="text-white text-base font-bold font-display">
+            {currentImage.title}
+          </h3>
           <p className="text-xs text-stone-300 mt-0.5">{currentImage.alt}</p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
-          {currentImage.pairedSlug && (
-            <button
-              onClick={() => {
-                const pairedIdx = images.findIndex((img) => img.slug === currentImage.pairedSlug);
-                if (pairedIdx !== -1) {
-                  onNavigate(pairedIdx);
-                }
-              }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] text-xs font-black shadow-lg hover:brightness-110 transition-all"
-            >
-              <span>
-                {currentImage.twoInOneRole === 'before'
-                  ? '✨ View Completed Elevation'
-                  : '🔄 View Raw Frame Stage'}
-              </span>
-            </button>
-          )}
-
-          <div className="flex items-center gap-1.5 text-xs text-[#C8A24A] font-medium">
-            <MapPin className="w-3.5 h-3.5" />
-            <span>{currentImage.location}</span>
-          </div>
+        <div className="flex items-center gap-1.5 text-xs text-[#C8A24A] font-medium shrink-0">
+          <MapPin className="w-3.5 h-3.5" />
+          <span>{currentImage.location}</span>
         </div>
       </div>
     </div>

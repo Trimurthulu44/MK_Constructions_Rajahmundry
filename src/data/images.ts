@@ -3,9 +3,9 @@
  * Processed from original site archives with descriptive SEO slugs,
  * multi-width WebP responsive sets, and low-res blur placeholders.
  * 
- * Curated for maximum visual beauty:
- * 1. Premier completed luxury elevations prioritized first.
- * 2. 2-in-1 transformation pairing for the 3-storey residence (Raw Framing <-> Completed Finish).
+ * Curated for maximum visual beauty and structure:
+ * 1. Premier completed luxury residences & elevations prioritized first.
+ * 2. Unlinked, individual standalone projects displayed neatly one by one.
  * 3. Hero slideshow animation restricted exclusively to the most stunning finished homes.
  */
 
@@ -26,48 +26,9 @@ export interface ConstructionImage {
   isHeroCandidate: boolean;
   isFounderPortrait: boolean;
   excludeReason: string | null;
-  pairedSlug?: string;
-  twoInOneRole?: 'before' | 'after';
+  statusBadge?: string;
+  scope?: string;
 }
-
-export interface TwoInOneProject {
-  id: string;
-  title: string;
-  teluguTitle: string;
-  location: string;
-  beforeSlug: string;
-  afterSlug: string;
-  beforeLabel: string;
-  afterLabel: string;
-  beforePhase: string;
-  afterPhase: string;
-  story: string;
-  teluguStory: string;
-  specs: { label: string; value: string }[];
-}
-
-export const TWO_IN_ONE_PROJECTS: TwoInOneProject[] = [
-  {
-    id: 'rajahmundry-3storey-residence',
-    title: 'Contemporary 3-Storey Architectural Residence',
-    teluguTitle: 'ఆధునిక 3 అంతస్తుల నివాస భవనం (2-in-1 పూర్తి ప్రయాణం)',
-    location: 'Rajahmundry',
-    beforeSlug: 'structural-framing-elevation-inspection-rajahmundry',
-    afterSlug: 'modern-residential-house-elevation-rajahmundry-01',
-    beforeLabel: 'Under Construction (RCC Frame & Beam Markings)',
-    afterLabel: 'Completed Turnkey Elevation (With Ganesha Motif)',
-    beforePhase: 'Civil Framing & Alignment Stage',
-    afterPhase: 'Completed Turnkey Handover',
-    story: 'From structural column framing, precise beam alignment, and lintel casting to the final pristine white exterior styling with the custom Lord Ganesha stone-relief motif. Directly supervised on-site by contractor Gedala Laxman Rao without subcontracting.',
-    teluguStory: 'సైట్ వద్ద పిల్లర్ల ఫ్రేమింగ్, బీమ్ అమరికల నుండి వినాయకుడి ఎలివేషన్ ఆర్ట్ మరియు ఆధునిక రంగులతో పూర్తయిన ఇల్లు. గెడల లక్ష్మణరావు గారి ప్రత్యక్ష పర్యవేక్షణలో నిర్మించబడింది.',
-    specs: [
-      { label: 'Structure', value: 'G + 2 (3 Storeys)' },
-      { label: 'Materials', value: 'Fe-550D TMT + 53G OPC Cement' },
-      { label: 'Masonry', value: 'Godavari River Sand + Kiln Red Bricks' },
-      { label: 'Highlight', value: 'Lord Ganesha Relief & Modern Louvers' },
-    ],
-  },
-];
 
 export const SITE_IMAGES: ConstructionImage[] = [
   {
@@ -91,7 +52,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUCAwQG/8QAKBAAAgEEAQMCBwEAAAAAAAAAAQIDAAQRIRIFMWFBURMUM5GSwdHw/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/8QAGxEBAAICAwAAAAAAAAAAAAAAAQACESEDE0H/2gAMAwEAAhEDEQA/AL7m4S1gR3hmkMjEAxrnGMf2rzbq9kt1Es/KVQxDSY4DHt+qT3U04iQ2l3CQoYv8TbNvQ2KbdLkluumiORxzAySmsnHaq5L2V3ClQCEbjiC8kS52BkZx53RUbeCCWMmSRlZTjAfGvtRR22fYNA1OduG63aKWa7CoGChI5AQNdqZiWS4tI7G65NJLArPIHAOc59vFY+qsflLcehYnt4prZWkM81s8qEsIgM8iPTxUK7lmJmnd4pMBRsZ1v/dqKet061z9I/kf7RWRZDE0QXM//9k=",
     "isHeroCandidate": true,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Completed Residence",
+    "scope": "Turnkey Villa Construction · Glass Balconies & Exterior Cladding"
   },
   {
     "slug": "modern-residential-house-elevation-rajahmundry-01",
@@ -111,12 +74,12 @@ export const SITE_IMAGES: ConstructionImage[] = [
       1280,
       1920
     ],
-    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUBAwQG/8QAKRAAAgEDAgUDBQEAAAAAAAAAAQIDAAQRBRMSISIxQRRCUWFxgZGhwf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/8QAGxEAAwACAwAAAAAAAAAAAAAAAAECERITITH/2gAMAwEAAhEDEQA/AG8pR54kMZkGCSFPb4J+lZbPjGoOrcW2RgMZeknxgHtUWD3EkyujIV2wJD7e2f3Wcxk3onS4aOJOEtEQT/anbbyKnoeFJFxlCCRnHfH5FFUxSRFNyM8O51MNwjn55UUctlpJx2i6lOk3p1nKLIc9gRn/ACrdVmurKcCKUlWTJ5D5pDC7I4dWIZeYI8U/vnaQRljk7RoJeDrS7uSOwjEq8bN1Z+9FZdMkf0EXP2iijAn/2Q==",
+    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUBAwQG/8QAKRAAAgEDAgUDBQEAAAAAAAAAAQIDAAQRBRMSISIxQRRCUWFxgZGhwf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/8QAGxEAAwACAwAAAAAAAAAAAAAAAAECERITITH/2gAMwEAAhEDEQA/AG8pR54kMZkGCSFPb4J+lZbPjGoOrcW2RgMZeknxgHtUWD3EkyujIV2wJD7e2f3Wcxk3onS4aOJOEtEQT/anbbyKnoeFJFxlCCRnHfH5FFUxSRFNyM8O51MNwjn55UUctlpJx2i6lOk3p1nKLIc9gRn/ACrdVmurKcCKUlWTJ5D5pDC7I4dWIZeYI8U/vnaQRljk7RoJeDrS7uSOwjEq8bN1Z+9FZdMkf0EXP2iijAn/2Q==",
     "isHeroCandidate": true,
     "isFounderPortrait": false,
     "excludeReason": null,
-    "pairedSlug": "structural-framing-elevation-inspection-rajahmundry",
-    "twoInOneRole": "after"
+    "statusBadge": "Completed Residence",
+    "scope": "Independent G+2 Floors · Custom Lord Ganesha Relief Art"
   },
   {
     "slug": "independent-house-front-elevation-rajahmundry",
@@ -138,7 +101,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAMGAgX/xAAhEAACAgICAQUAAAAAAAAAAAABAgMRAAQhQRIFBhMiYf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/8QAFhEBAQEAAAAAAAAAAAAAAAAAABES/9oADAMBAAIRAxEAPwBsnrsujO6yvSxGvEAlTfebHuJ9qMSwOqoreB+nZ57zg/BPtu7rVMxY2a7xg15NUgSFQvlxyTeNEWmnJHNrq+wwaTkEgV3hkgptRTKPwXhl0kf/2Q==",
     "isHeroCandidate": true,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Completed Residence",
+    "scope": "Independent Bungalow · Compound Wall & Designer Steel Entrance"
   },
   {
     "slug": "textured-facade-residence-rajahmundry-03",
@@ -159,7 +124,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFBgH/xAAnEAACAQMEAAUFAAAAAAAAAAABAgMABBEFEiFBEzFhkaEVIjJRcf/EABYBAQEBAAAAAAAAAAAAAAAAAAIDAf/EABoRAAMBAAMAAAAAAAAAAAAAAAABESECIjH/2gAMwEAAhEDEQA/AEtImMJWVnKgE4fO32NaL61dSaS00UqOqhgJFGS2Pj4qVraiHThahoQ4PMbgDOe+PKmbdg+iKuc71cJ/MHyrPApRU0sVzG8SOGH3KD70VP0Zkl0m2ZmQEJjn0oquGaYu/vbSW5QXYMng4DKRwT3yOqrxtPPZ2ps7ZVgTlBv81wRj5qdcMFkCeHEV2p+Uanr1FdnvLi3CRQysiBRhV4AqDURTj2KFvFPa26RSwlmA6m245/VFKQTyzx75ZGds4yT1RRoz/9k=",
     "isHeroCandidate": true,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Completed Residence",
+    "scope": "Geometric Texture Plastering · Green Glazing & Louvers"
   },
   {
     "slug": "lakshmi-nilayam-residential-building-rajahmundry-04",
@@ -177,10 +144,12 @@ export const SITE_IMAGES: ConstructionImage[] = [
       480,
       800
     ],
-    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAQBAwIFBgf/xAAmEAABBAEDBAEFAAAAAAAAAAABAgMEEQASEyEFIkFRMQYUYbHh/8QAFwEBAQEBAAAAAAAAAAAAAAAAAgMAAf/EABgRAAMBAQAAAAAAAAAAAAAAAAABEhEC/9oADAMBAAIRAxEAPwC1ibFkw5CUlZG2Bso7a7r4Huzl8Dp8Pqiu9KkONVS0dpWn0R4Oawx2mmnnGLSvTYAxn6em7cttbo0ldpVXi/7WLloPWnURYqYkdDDdBKR6+cMlMxhQvUR+DWGOkGWedMSZX2khwOqVoRaQefONdM6i9M3N8oS4mtJ00cVHCaHxWZskhdjg6D+8jmoqOKmobNbHJ5Pnm8MlhIKDYB7jhmk5R//Z",
+    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAAQBAwIFBgf/xAAmEAABBAEDBAEFAAAAAAAAAAABAgMEEQASEyEFIkFRMQYUYbHh/8QAFwEBAQEAAAAAAAAAAAAAAAAAAgMAAf/EABgRAAMBAQAAAAAAAAAAAAAAAAABEhEC/9oADAMBAAIRAxEAPwC1ibFkw5CUlZG2Bso7a7r4Huzl8Dp8Pqiu9KkONVS0dpWn0R4Oawx2mmnnGLSvTYAxn6em7cttbo0ldpVXi/7WLloPWnURYqYkdDDdBKR6+cMlMxhQvUR+DWGOkGWedMSZX2khwOqVoRaQefONdM6i9M3N8oS4mtJ00cVHCaHxWZskhdjg6D+8jmoqOKmobNbHJ5Pnm8MlhIKDYB7jhmk5R//Z",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Completed Residence",
+    "scope": "Multi-Storey Family Home · Custom Steel Gate & Color Elevation"
   },
   {
     "slug": "custom-wooden-partition-jali-interior-rajahmundry",
@@ -200,7 +169,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAZABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAUCAwQG/8QAJxAAAgEEAQIFBQAAAAAAAAAAAQIDAAQRIRITMQU0QYGhFDNRcXL/xAAXAQEBAQEAAAAAAAAAAAAAAAADAgAB/8QAGhEAAwEBAQEAAAAAAAAAAAAAAAERAiEDEv/aAAwDAQACEQMRAD8AwWzGaE8rWWFARlpCGB323ut0KNFDcG3uJI8bHE6HfRFc/HN4gk6xO0pR2bCsdHWvmm9uHjgl5jBwew0den5GfWp039dFXcsbC0hCjmxZsbNFBbdFVUFGLpkH07MdBSD75qLQgPIVk6nM5bgM/I0KquPLSfqtq+Ti/mi9LUxcOKFnVV9qwxRSm5+77UVjkP/Z",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Interior Craftsmanship",
+    "scope": "Teak Wood Partition · CNC Peacock Jali Screen & LED Niches"
   },
   {
     "slug": "modern-modular-kitchen-cabinets-rajahmundry",
@@ -220,7 +191,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQEASABIAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAeABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQCAwUG/8QAKxAAAgEDAgUDBQEAAAAAAAAAAQIDAAQRBRITIUEGFCIxUYEVJDJxobHR/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQIA/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAMwEAAhEDEQA/ANFbqytoTmTiSD6to3Gs2fXslu7Wp+7nAFStoysjJG28SKUDqeYIOM49qVn0RpI3UXCjIPiZTz/NVEoXusahDKqiSFcoCQvMDNFJns8uT82MdMg5/VFBPzadJZsHLMiqfAw8zVPfL2DPDnLD0auokwwKsAQeRB61jX+mKsbywNtCjJRvL2NVRCHxu4HJ7ZCfXZ/KKVXDKGHWisz/2Q==",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Interior Craftsmanship",
+    "scope": "Modular Kitchen Cabinets · Black Granite Counter & Under-Cabinet Lights"
   },
   {
     "slug": "traditional-arched-hallway-pillars-rajahmundry",
@@ -241,7 +214,78 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAIDBAUG/8QAJhAAAgICAQMCBwAAAAAAAAAAAQIDEQAEIQYSMQUTFSNBUXGhwf/EABUBAQEAAAAAAAAAAAAAAAAAAAMB/8QAGREBAAMBAQAAAAAAAAAAAAAAAAERIRIT/9oADAMBAAIRAxEAPwDNg1GbbVZjbyKHP3I/H8yf13VXUWF44vaZnEbIR+8qdP7qfFIDK1UW5Y/Tis1+sJkrXpu75ym7vCqbJlLQhWNQgCkKKsjDIUnDLbHm8MPzL05NdYCRWruQcGvOR7qqgUxSEr3ChfjLMbGvOLtorQlyAWHg4sToqwo29xRQmesMWMkoCcMqP//Z",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Interior Craftsmanship",
+    "scope": "Circular RCC Pillars · Arched Colonnade Hallway & Doll Niches"
+  },
+  {
+    "slug": "structural-framing-elevation-inspection-rajahmundry",
+    "originalFile": "qqqq.jpg.jpg",
+    "title": "Multi-Storey Civil Framing & Beam Inspection",
+    "location": "Rajahmundry",
+    "category": "in-progress",
+    "alt": "Multi-level building concrete frame inspection with structural beam markings in Rajahmundry",
+    "width": 1080,
+    "height": 1440,
+    "aspectRatio": 0.75,
+    "src": "/images/optimized/structural-framing-elevation-inspection-rajahmundry.webp",
+    "srcSet": "/images/optimized/structural-framing-elevation-inspection-rajahmundry-480.webp 480w, /images/optimized/structural-framing-elevation-inspection-rajahmundry-800.webp 800w",
+    "widths": [
+      480,
+      800
+    ],
+    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgP/xAAqEAACAQMDAgMJAAAAAAAAAAABAgMABBEFITESExSBkTJBQkNRYXGh0f/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABcRAAMBAAAAAAAAAAAAAAAAAAABERL/2gAMAwEAAhEDEQA/AK+tahJp1qnhlYyufaChukffP1qZNPd+FDXsjGWSVQFduoAH0GfKpOr6jb3N4HaBy0Z5D56wOBjHH9qldyyslszZy0iswB2XY0boSiHBePEBH3SAvHuopCUBnJL4ziipo1mkSLUXhuVItI0lf4gCDv8AmqcvdkaMuYXdG6l2Iwa4G6nknMLyFoweDv8AuiYBUJXY45rIpp++G36fImilO/KPmN60Uhaz/9k=",
+    "isHeroCandidate": false,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Under Construction",
+    "scope": "Structural RCC Beam Marking · Laser Level & Plaster Inspection"
+  },
+  {
+    "slug": "red-brick-masonry-house-construction-rajahmundry",
+    "originalFile": "santh.jpg.jpg",
+    "title": "Red Brick Masonry & Lintel Casting",
+    "location": "Rajahmundry",
+    "category": "in-progress",
+    "alt": "Solid red brick masonry wall construction for a multi-level house in Rajahmundry",
+    "width": 780,
+    "height": 1040,
+    "aspectRatio": 0.75,
+    "src": "/images/optimized/red-brick-masonry-house-construction-rajahmundry.webp",
+    "srcSet": "/images/optimized/red-brick-masonry-house-construction-rajahmundry-480.webp 480w",
+    "widths": [
+      480
+    ],
+    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQDBQYH/8QAKRAAAgEDAgUDBQEAAAAAAAAAAQIDAAQRBRSIjEGE0FhUYGRocHw8f/EABYBAQEBAAAAAAAAAAAAAAAAAAIDAP/EABoRAQEAAgMAAAAAAAAAAAAAAAEAAiERElH/2gAMwEAAhEDEQA/ANNrN1La2Ja3YpKW6ekd8Ula61diw8y52h1l2bgRmQnsAKj8TTs9tHb9IkcFlDEAdwPX2Jql06Y2sNyXjUlWygVwxI/FTXyeBvd0JW3KCASDz3oqk0nW1k02Bpo2Em3DbcEfuMUUxiliNbgdHh3PkO67ctnHxpfS5s+acYBJH0/tOeKAEv7RF4XAOPnSMIEVjM0YCkFeR71kI4PE6ksHK8dB24wTj70VprOwtGhwbaIhTtGVHbAoqfcm5N//2Q==",
+    "isHeroCandidate": false,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Under Construction",
+    "scope": "Kiln-Burned Godavari Red Bricks · Reinforced Concrete Lintel Beams"
+  },
+  {
+    "slug": "rcc-roof-slab-shuttering-construction-rajahmundry",
+    "originalFile": "pp.jpg.jpg",
+    "title": "RCC Roof Slab Centering & Reinforcement",
+    "location": "Rajahmundry",
+    "category": "in-progress",
+    "alt": "Roof slab formwork, timber centering, and structural concrete framing for a home in Rajahmundry",
+    "width": 1280,
+    "height": 963,
+    "aspectRatio": 1.33,
+    "src": "/images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry.webp",
+    "srcSet": "/images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry-480.webp 480w, /images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry-800.webp 800w, /images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry-1280.webp 1280w",
+    "widths": [
+      480,
+      800,
+      1280
+    ],
+    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUDBAb/xAAlEAACAQMDAgcAAAAAAAAAAAABAgQAAxEFMVEhgRITFCJBQ6H/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABoRAAICAwAAAAAAAAAAAAAAAAABERICEyH/2gAMwEAAhEDEQA/AGWtTDDs4tAeaw6eLZRyaVwNaBcW5e3xdUdO4qfVZcYss1lMgfUB7QBzg0rF7TJLlmj3o7gDLWyOONvym7nhKxUGvt2hctq6EMrDIZTkGiqEDVI8eItr1AYLsXtHOO1FXsQUZ//Z",
+    "isHeroCandidate": false,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Under Construction",
+    "scope": "Roof Slab Formwork · Fe-550D TMT Grid Centering & Leveling"
   },
   {
     "slug": "commercial-arched-building-construction-rajahmundry",
@@ -263,52 +307,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAIGBAX/xAAlEAABAgUCBwEAAAAAAAAAAAABAAIDBAURIRIxBhMyQVFhcZL/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABgRAQADAQAAAAAAAAAAAAAAAAABESEi/9oADAMBAAIRAxEAPwDfJ16FIQ+TEBedV8uIsPV07+JwTYCFbbdTbqfCFu/0lOKfLBrXOznG6Kg3KkbWoL2h2h2fBCFxGSEC3Qf2hHKtf//Z",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
-  },
-  {
-    "slug": "rcc-roof-slab-shuttering-construction-rajahmundry",
-    "originalFile": "pp.jpg.jpg",
-    "title": "RCC Roof Slab Centering & Reinforcement",
-    "location": "Rajahmundry",
-    "category": "in-progress",
-    "alt": "Roof slab formwork, timber centering, and structural concrete framing for a home in Rajahmundry",
-    "width": 1280,
-    "height": 963,
-    "aspectRatio": 1.33,
-    "src": "/images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry.webp",
-    "srcSet": "/images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry-480.webp 480w, /images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry-800.webp 800w, /images/optimized/rcc-roof-slab-shuttering-construction-rajahmundry-1280.webp 1280w",
-    "widths": [
-      480,
-      800,
-      1280
-    ],
-    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAPABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAUDBAb/xAAlEAACAQMDAgcAAAAAAAAAAAABAgQAAxEFMVEhgRITFCJBQ6H/xAAVAQEBAAAAAAAAAAAAAAAAAAABAv/EABoRAAICAwAAAAAAAAAAAAAAAAABERICEyH/2gAMAwEAAhEDEQA/AGWtTDDs4tAeaw6eLZRyaVwNaBcW5e3xdUdO4qfVZcYss1lMgfUB7QBzg0rF7TJLlmj3o7gDLWyOONvym7nhKxUGvt2hctq6EMrDIZTkGiqEDVI8eItr1AYLsXtHOO1FXsQUZ//Z",
-    "isHeroCandidate": false,
-    "isFounderPortrait": false,
-    "excludeReason": null
-  },
-  {
-    "slug": "structural-framing-elevation-inspection-rajahmundry",
-    "originalFile": "qqqq.jpg.jpg",
-    "title": "Structural Beam Elevation Inspection (2-in-1 Stage)",
-    "location": "Rajahmundry",
-    "category": "in-progress",
-    "alt": "Multi-level building concrete frame inspection with structural beam markings in Rajahmundry",
-    "width": 1080,
-    "height": 1440,
-    "aspectRatio": 0.75,
-    "src": "/images/optimized/structural-framing-elevation-inspection-rajahmundry.webp",
-    "srcSet": "/images/optimized/structural-framing-elevation-inspection-rajahmundry-480.webp 480w, /images/optimized/structural-framing-elevation-inspection-rajahmundry-800.webp 800w",
-    "widths": [
-      480,
-      800
-    ],
-    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAQFAgP/xAAqEAACAQMDAgMJAAAAAAAAAAABAgMABBEFITESExSBkTJBQkNRYXGh0f/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABcRAAMBAAAAAAAAAAAAAAAAAAABERL/2gAMAwEAAhEDEQA/AK+tahJp1qnhlYyufaChukffP1qZNPd+FDXsjGWSVQFduoAH0GfKpOr6jb3N4HaBy0Z5D56wOBjHH9qldyyslszZy0iswB2XY0boSiHBePEBH3SAvHuopCUBnJL4ziipo1mkSLUXhuVItI0lf4gCDv8AmqcvdkaMuYXdG6l2Iwa4G6nknMLyFoweDv8AuiYBUJXY45rIpp++G36fImilO/KPmN60Uhaz/9k=",
-    "isHeroCandidate": false,
-    "isFounderPortrait": false,
-    "excludeReason": "Contains red inspection box markups on image; paired directly with completed elevation as a 2-in-1 transformation showcase",
-    "pairedSlug": "modern-residential-house-elevation-rajahmundry-01",
-    "twoInOneRole": "before"
+    "excludeReason": null,
+    "statusBadge": "Commercial Structure",
+    "scope": "Arched Commercial Colonnade · Open Span Hall & Plaster Finishing"
   },
   {
     "slug": "multi-storey-apartment-scaffolding-plastering-rajahmundry",
@@ -328,7 +329,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAkABQDASIAAhEBAxEB/8QAGgAAAgMBAQAAAAAAAAAAAAAAAAYEBQcBA//EACcQAAICAQIFAwUAAAAAAAAAAAECAAMRBBIFEyExQQYUkSJSYXGB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgEA/8QAFxEBAQEBAAAAAAAAAAAAAAAAAAERIf/aAAwDAQACEQMRAD8AjPxHUPr1L2VgqcitTuJ/viMa0pfUtqD6WGf1FZarltAanT0LnrWpG7575jFwO3bqRQ/Rbh03fcIpUseh0wz2hLZ9PhoS6jPq/YC6vlG9m3dHxjPzL3QuK79NYGDBXXLeT+ZRLqa/cLt0DKFOQ2cASTTxWnm8t6WoZV6HcPHYCE2hWEbzCKL+obScq5bI8JCHrYXN5xmc1NhrqSxQA24dcd4QiZJQm8FmOCpKjAEIQg0n/9k=",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Under Construction",
+    "scope": "Exterior Cement Plastering · Heavy-Duty Scaffolding & Alignment"
   },
   {
     "slug": "building-construction-workers-masonry-rajahmundry",
@@ -349,27 +352,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAwEBAAAAAAAAAAAAAAAAAAQFAwIG/8QAJxAAAgEDAwMDBQAAAAAAAAAAAQIDAAQRBRIhEzFBBkJhFFFTcfH/xAAXAQADAQAAAAAAAAAAAAAAAAAAAQID/8QAGREBAAIDAAAAAAAAAAAAAAAAAAERAhJB/9oADAMBAAIRAxEAPwCzrup3NpcILWWMIynIZMkEH+UlD6guYmkW7XqkfiIBHH65qVqyxLe3LRSZx2XfkkjxSsSiN5HjYMVxtwc89+aLFPS/X7lV2diXUN3HkUUlp9xizjWVlR1yCOkD5+RRQlI1C3eOS+kkZXnjCk4HBJ+KzW3ZLlnSTam1cBRznAzVSdRG8W33ICxJzk0hklmz9zUbW1jHjdQR7jzyc0VxbsWiBJPc0Uyf/9k=",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": null
-  },
-  {
-    "slug": "red-brick-masonry-house-construction-rajahmundry",
-    "originalFile": "santh.jpg.jpg",
-    "title": "Red Brick Masonry & Lintel Casting",
-    "location": "Rajahmundry",
-    "category": "in-progress",
-    "alt": "Solid red brick masonry wall construction for a multi-level house in Rajahmundry",
-    "width": 780,
-    "height": 1040,
-    "aspectRatio": 0.75,
-    "src": "/images/optimized/red-brick-masonry-house-construction-rajahmundry.webp",
-    "srcSet": "/images/optimized/red-brick-masonry-house-construction-rajahmundry-480.webp 480w",
-    "widths": [
-      480
-    ],
-    "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAbABQDASIAAhEBAxEB/8QAGQAAAgMBAAAAAAAAAAAAAAAAAAQDBQYH/8QAKRAAAgEDAgUDBQEAAAAAAAAAAQIDAAQRBRSIjEGE0FhUYGRocHw8f/EABYBAQEBAAAAAAAAAAAAAAAAAAIDAP/EABoRAQEAAgMAAAAAAAAAAAAAAAEAAiERElH/2gAMAwEAAhEDEQA/ANNrN1La2Ja3YpKW6ekd8Ula61diw8y52h1l2bgRmQnsAKj8TTs9tHb9IkcFlDEAdwPX2Jql06Y2sNyXjUlWygVwxI/FTXyeBvd0JW3KCASDz3oqk0nW1k02Bpo2Em3DbcEfuMUUxiliNbgdHh3PkO67ctnHxpfS5s+acYBJH0/tOeKAEv7RF4XAOPnSMIEVjM0YCkFeR71kI4PE6ksHK8dB24wTj70VprOwtGhwbaIhTtGVHbAoqfcm5N//2Q==",
-    "isHeroCandidate": false,
-    "isFounderPortrait": false,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "On-Site Operations",
+    "scope": "Direct Contractor Supervision · Veteran Masonry & Electrical Conduits"
   },
   {
     "slug": "interior-wall-color-finishes-palette",
@@ -390,7 +375,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCAAkABQDASIAAhEBAxEB/8QAGgABAAMBAQEAAAAAAAAAAAAAAAEDBAIFBv/EACYQAAIBAwMEAQUAAAAAAAAAAAECAwAEERIhMRMUQVEiI0JhofD/xAAXAQEBAQEAAAAAAAAAAAAAAAADBAEC/8QAIREAAQQBBAMBAAAAAAAAAAAAAQACAxESEyEiMQRRkaH/2gAMAwEAAhEDEQA/ANbNcPb62k3JPG3mogJFqrGQlskE5P8AeamS8g1dAW7qxJwvmqLmSKBRE8mhgMlD9ufdceZJrQhjDuro2xx0cMfivt71hHhjqOeSKVhh6JTIkYjPIFKPin1YvX4u5ryTuRK9vKoJyG0+v3We9Ntc3WTL9YqNWonJ2/NerNH297aQQ3XbJO51nOQMDneu54IYZWVr4uPLsw+R97UccowEg3tQycyGVVKmzs7dbdVeTDDYjI2NKkQwEkly5J5DUozHkcr7TtiNBfP3Mkl65aeQnBOBtgVCqeki63wFG2aUpWAAUEJ7BVkDSRqwSV1GeAaUpShaCv/Z",
     "isHeroCandidate": false,
     "isFounderPortrait": false,
-    "excludeReason": "6-panel paint sample collage of non-photographic catalog nature; preserved in gallery for color consult references but excluded from hero banner"
+    "excludeReason": "6-panel paint sample reference for interior color consultations",
+    "statusBadge": "Finishing Catalog",
+    "scope": "Room Shade Palettes · Waterproof Primers & Emulsion Finishes"
   },
   {
     "slug": "gedala-laxman-rao-founder-mk-constructions",
@@ -411,7 +398,9 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "blurDataUrl": "data:image/webp;base64,UklGRrYAAABXRUJQVlA4IKoAAABQBACdASoUABkAPtFYpEyoJSOiKA1RABoJQAAFjrcnMziwc1lrEMyTmfiAAPxQNyi7Wz9GHrf76l818oZgq6822i5bn01y7TByCZEdacFnc2bpyd2i6F9N6WcSO1izZI5VtAfpcwI7LBIBGAJ+y8zSBmWSPe+/93/7xRSFfF08K+4luf5RRkbE/e0JeItneu8p0w8vYaVqqkFq+lj/cM7MPA9fN/i9NpAAAA==",
     "isHeroCandidate": false,
     "isFounderPortrait": true,
-    "excludeReason": null
+    "excludeReason": null,
+    "statusBadge": "Chief Civil Contractor",
+    "scope": "10+ Years On-Site Experience · Daily Direct Site Supervision"
   }
 ];
 

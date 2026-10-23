@@ -39,9 +39,9 @@ export const HomePage: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // 2-in-1 Authentic Before/After comparison images (exact matching Rajahmundry residence)
-  const beforeImg = SITE_IMAGES.find((img) => img.slug === 'structural-framing-elevation-inspection-rajahmundry') || SITE_IMAGES[0];
-  const afterImg = SITE_IMAGES.find((img) => img.slug === 'modern-residential-house-elevation-rajahmundry-01') || SITE_IMAGES[1];
+  // Before/After comparison images: Masonry craftsmanship vs Completed elevation
+  const beforeImg = SITE_IMAGES.find((img) => img.slug === 'red-brick-masonry-house-construction-rajahmundry') || SITE_IMAGES[0];
+  const afterImg = SITE_IMAGES.find((img) => img.slug === 'luxury-multi-storey-home-rajahmundry-02') || SITE_IMAGES[1];
 
   // Rotate hero slides every 6 seconds with hover-pause support
   useEffect(() => {
@@ -548,26 +548,26 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* 5. Direct Proof of Workmanship: Authentic 2-in-1 Transformation */}
+      {/* 5. Construction Quality Comparison: Masonry to Finished Elevation */}
       <section className="py-20 bg-stone-100 border-t border-stone-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-5">
               <span className="text-xs font-bold uppercase tracking-wider text-[#D97706] flex items-center gap-1.5">
-                <span>{t('2-in-1 True Transformation', '2-ఇన్-1 అసలైన నిర్మాణం')}</span>
+                <span>{t('Workmanship Transparency', 'పనితీరు & నాణ్యత')}</span>
                 <span className="text-stone-400">·</span>
-                <span className="text-stone-600 font-mono text-[11px]">Same Rajahmundry Site</span>
+                <span className="text-stone-600 font-mono text-[11px]">Rajahmundry Sites</span>
               </span>
               <h2 className="text-2xl sm:text-3xl font-black font-display text-[#0B1320] text-balance">
                 {t(
-                  'From Structural Concrete Framing to Designer 3-Storey Elevation',
-                  'రా ఫ్రేమింగ్ & పిల్లర్ల దశ నుండి పూర్తయిన అందమైన ఇల్లు'
+                  'From Solid Kiln Brick Masonry to Finished Modern Elevation',
+                  'పునాది ఇటుక పని నుంచి అందమైన ఆధునిక ఎలివేషన్ వరకు'
                 )}
               </h2>
               <p className="text-sm text-stone-600 leading-relaxed">
                 {t(
-                  'Witness the complete construction journey of this identical Rajahmundry residence: from structural beam alignment and raw plaster inspection to the finished elevation with custom Lord Ganesha relief.',
-                  'ఒకే భవనం పునాది పిల్లర్లు మరియు రా ఫ్రేమింగ్ దశ నుండి తుది ఎలివేషన్ పూర్తయ్యే వరకు వచ్చిన అద్భుతమైన మార్పును స్లైడర్ ద్వారా స్వయంగా చూడండి.'
+                  'Slide across to inspect the structural durability of our solid Godavari red clay brick masonry alongside the exquisite finish of our completed residential elevations in Rajahmundry.',
+                  'స్లైడర్‌ను జరిపి మా గోదావరి ఇటుకల నిర్మాణ నాణ్యత మరియు పూర్తయిన అందమైన ఎలివేషన్‌ను పరిశీలించండి.'
                 )}
               </p>
               <div className="space-y-3 pt-2">
@@ -575,10 +575,10 @@ export const HomePage: React.FC = () => {
                   <Hammer className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
                   <div>
                     <h4 className="text-sm font-bold text-[#0B1320]">
-                      {t('Structural Alignment & Inspection', 'ఖచ్చితమైన పిల్లర్ల & బీమ్ అమరిక')}
+                      {t('Godavari Kiln-Fired Solid Bricks', 'నాణ్యమైన గోదావరి ఇటుకలు')}
                     </h4>
                     <p className="text-xs text-stone-600">
-                      Fe-550D TMT rebar, 53G OPC cement, and laser-straight lintel levels.
+                      High thermal insulation, zero hollow shrinkage cracks, and rich cement mortar bonding.
                     </p>
                   </div>
                 </div>
@@ -589,7 +589,7 @@ export const HomePage: React.FC = () => {
                       {t('Turnkey Designer Elevation Handover', 'నాణ్యమైన ఎలివేషన్ ముగింపు')}
                     </h4>
                     <p className="text-xs text-stone-600">
-                      Weatherproof exterior coatings, architectural louvers, and bespoke stone Ganesha art.
+                      Weatherproof exterior coatings, architectural cladding, and direct contractor supervision.
                     </p>
                   </div>
                 </div>
@@ -600,15 +600,15 @@ export const HomePage: React.FC = () => {
               <BeforeAfterSlider
                 beforeImage={beforeImg}
                 afterImage={afterImg}
-                beforeLabel={t('Before: Structural RCC Frame & Alignment', 'నిర్మాణంలో: రా ఫ్రేమింగ్ & బీమ్ అమరిక')}
-                afterLabel={t('After: Completed 3-Storey Elevation (Ganesha Motif)', 'పూర్తయిన తర్వాత: 3 అంతస్తుల మోడ్రన్ ఎలివేషన్')}
+                beforeLabel={t('Construction Stage: Solid Red Brickwork', 'నిర్మాణంలో: నాణ్యమైన ఇటుకల గోడలు')}
+                afterLabel={t('Finished Stage: Modern Villa Elevation', 'పూర్తయిన తర్వాత: మోడ్రన్ విల్లా ఎలివేషన్')}
               />
               <p className="text-xs text-stone-500 text-center mt-3 flex items-center justify-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#D97706]" />
                 <span>
                   {t(
-                    'Interactive 2-in-1 transformation: drag the center divider to compare before & after on the same building.',
-                    'ఒకే భవనం యొక్క నిర్మాణ దశ మరియు పూర్తయిన రూపాన్ని సరిపోల్చడానికి స్లైడర్‌ను జరపండి.'
+                    'Interactive comparison: drag the center divider left or right to explore structural quality.',
+                    'స్లైడర్‌ను ఇరువైపులా జరిపి నిర్మాణ నాణ్యతను చూడవచ్చు.'
                   )}
                 </span>
               </p>

@@ -173,11 +173,6 @@ export const FeaturedProjects: React.FC = () => {
                     <span className="px-2.5 py-1 rounded-md bg-[#0B1320]/85 backdrop-blur-md text-[#E5A93C] text-[10px] font-bold uppercase tracking-wider border border-white/10">
                       {project.category}
                     </span>
-                    {project.twoInOneRole && (
-                      <span className="px-2.5 py-1 rounded-md bg-gradient-to-r from-[#E5A93C] to-[#F59E0B] text-[#0B1320] text-[10px] font-black uppercase tracking-wider shadow-md">
-                        ✨ 2-in-1 Project
-                      </span>
-                    )}
                   </div>
 
                   {/* Animated Interactive Button on Mouse-Over */}
