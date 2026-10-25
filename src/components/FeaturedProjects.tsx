@@ -21,11 +21,14 @@ export const FeaturedProjects: React.FC = () => {
   // Curated featured projects pulled from data manifest
   const featuredSlugs = [
     'luxury-multi-storey-home-rajahmundry-02',
+    'contemporary-3-storey-villa-wood-accents-rajahmundry',
+    'lakshmi-ram-multi-storey-residence-rajahmundry',
     'modern-residential-house-elevation-rajahmundry-01',
     'multi-storey-residential-apartment-complex-rajahmundry',
     'deluxe-mahal-commercial-event-hall-rajahmundry',
     'barkas-arabian-kitchens-restaurant-rajahmundry',
     'modern-green-accent-independent-house-rajahmundry',
+    'modern-bungalow-purple-grey-relief-rajahmundry',
     'independent-house-front-elevation-rajahmundry',
   ];
 

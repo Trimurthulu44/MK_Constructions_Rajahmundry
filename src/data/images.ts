@@ -170,6 +170,75 @@ export const SITE_IMAGES: ConstructionImage[] = [
     "scope": "Modern Independent Bungalow · Designer Elevation & Tiled Compound"
   },
 
+  // 6. Contemporary 3-Storey Villa with Wood Accents (NEW)
+  {
+    "slug": "contemporary-3-storey-villa-wood-accents-rajahmundry",
+    "originalFile": "contemporary-3-storey-villa-wood-accents.jpg",
+    "title": "Contemporary 3-Storey Villa with Wood Accents",
+    "location": "Rajahmundry",
+    "category": "exterior",
+    "projectType": "residential",
+    "alt": "Completed contemporary 3-storey residential villa with wood-textured paneling, glass balconies and compound wall in Rajahmundry",
+    "width": 460,
+    "height": 1024,
+    "aspectRatio": 0.45,
+    "src": "/images/optimized/contemporary-3-storey-villa-wood-accents-rajahmundry.webp",
+    "srcSet": "/images/optimized/contemporary-3-storey-villa-wood-accents-rajahmundry-480.webp 460w, /images/optimized/contemporary-3-storey-villa-wood-accents-rajahmundry.webp 460w",
+    "widths": [460, 460],
+    "blurDataUrl": "data:image/webp;base64,UklGRooAAABXRUJQVlA4IH4AAAAwBQCdASoUACwAPzmEulavJ6yysBVaqlAnCWUAyRAuboRA04OHugGQCqZinkeszmvtgAD+w5HqdW2hLQMt3v2pLBW7JQJybYHaMeAY9vVsbw7/0RtoVlHZr+NtvYf+PiqDpAImbWHp5IMQRN/5K/Do+9GEM/XgOuU1B1fWLAA=",
+    "isHeroCandidate": true,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Completed Villa",
+    "scope": "G+2 Contemporary Villa · Wood-Clad Elevation, Glass Railing Balconies & Compound Gate"
+  },
+
+  // 7. Lakshmi Ram Multi-Storey Residence (NEW)
+  {
+    "slug": "lakshmi-ram-multi-storey-residence-rajahmundry",
+    "originalFile": "lakshmi-ram-multi-storey-residence.jpg",
+    "title": "Lakshmi Ram Multi-Storey Residence",
+    "location": "Rajahmundry",
+    "category": "exterior",
+    "projectType": "residential",
+    "alt": "Lakshmi Ram multi-storey residence exterior elevation with stone grid cladding and blue architectural glass in Rajahmundry",
+    "width": 465,
+    "height": 1024,
+    "aspectRatio": 0.45,
+    "src": "/images/optimized/lakshmi-ram-multi-storey-residence-rajahmundry.webp",
+    "srcSet": "/images/optimized/lakshmi-ram-multi-storey-residence-rajahmundry-480.webp 465w, /images/optimized/lakshmi-ram-multi-storey-residence-rajahmundry.webp 465w",
+    "widths": [465, 465],
+    "blurDataUrl": "data:image/webp;base64,UklGRtgAAABXRUJQVlA4IMwAAAAwBgCdASoUACwAPzmMvFavKSYjqrgMAeAnCUAZ3jbINRK0yljeUlAq5YKoaiyh2C+eoV0+n9Jf6RR4AP7ISeogIawruONhaJYJzjfaOcgqDIefIuqDGYehMmvLgdjx04lmufeF1EJtGsrD4wvBP0GZF087lf9e+SXpml9CsihdQp0aMB1ImVNW0GQ83iyypOtOizmmDcKfiq6JddYfF/iIOh9Odd4zSBBVsSYRVWZjJl7qtN18VnL2kF9fvAcQCPkfSAzUdAOvu9lwAAA=",
+    "isHeroCandidate": true,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Completed Residence",
+    "scope": "Turnkey Multi-Floor Residence · Stone Grid Cladding, Blue Glass Windows & Lakshmi Ram Signage"
+  },
+
+  // 8. Modern Bungalow with Purple & Grey Relief Facade (NEW)
+  {
+    "slug": "modern-bungalow-purple-grey-relief-rajahmundry",
+    "originalFile": "modern-bungalow-purple-grey-relief.jpg",
+    "title": "Modern Bungalow with Purple & Grey Relief Facade",
+    "location": "Rajahmundry",
+    "category": "exterior",
+    "projectType": "residential",
+    "alt": "Single-storey independent house with textured grey plaster, purple architectural reliefs and tiled approach ramp in Rajahmundry",
+    "width": 1024,
+    "height": 768,
+    "aspectRatio": 1.33,
+    "src": "/images/optimized/modern-bungalow-purple-grey-relief-rajahmundry.webp",
+    "srcSet": "/images/optimized/modern-bungalow-purple-grey-relief-rajahmundry-480.webp 480w, /images/optimized/modern-bungalow-purple-grey-relief-rajahmundry-800.webp 800w, /images/optimized/modern-bungalow-purple-grey-relief-rajahmundry.webp 1024w",
+    "widths": [480, 800, 1024],
+    "blurDataUrl": "data:image/webp;base64,UklGRmwAAABXRUJQVlA4IGAAAACQAwCdASoUAA8APzmGuVOvKSWisAgB4CcJZQAAWzbMZDu3iHwgAP6yCEspQ1RCvT5Dx6FWMWUGOgQFR5X03OH1U6bt0iy0Wsyhgo2gKM1R0dMX6YOgiHQUnQfs42iAAAA=",
+    "isHeroCandidate": false,
+    "isFounderPortrait": false,
+    "excludeReason": null,
+    "statusBadge": "Completed Independent House",
+    "scope": "Turnkey Independent House · Textured Plastering, Purple Elevation Reliefs & Tiled Approach"
+  },
+
   // 6. Modern Single-Storey Independent Home (Purple & Grey)
   {
     "slug": "independent-house-front-elevation-rajahmundry",
