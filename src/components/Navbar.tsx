@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
               <img
                 src="/images/logo-circle.png"
                 alt="MK Constructions Official Logo"
-                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover shrink-0 drop-shadow-[0_2px_12px_rgba(229,169,60,0.5)] group-hover:scale-105 transition-transform ring-2 ring-[#E5A93C]/40"
+                className="w-11 h-11 sm:w-12 sm:h-12 rounded-full object-cover shrink-0 shadow-md group-hover:scale-105 transition-transform"
               />
               <span className="flex items-center gap-1.5">
                 <span>MK</span>
@@ -137,7 +137,7 @@ export const Navbar: React.FC = () => {
                   <img
                     src="/images/logo-circle.png"
                     alt="MK Constructions Logo"
-                    className="w-10 h-10 rounded-full object-cover shrink-0 drop-shadow-[0_2px_8px_rgba(229,169,60,0.4)] ring-2 ring-[#E5A93C]/40"
+                    className="w-10 h-10 rounded-full object-cover shrink-0 shadow-md"
                   />
                   <span className="font-display font-bold text-lg text-[#E5A93C]">
                     MK Constructions

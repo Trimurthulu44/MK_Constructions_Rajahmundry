@@ -130,14 +130,13 @@ export const HomePage: React.FC = () => {
 
         {/* Hero Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 text-center text-white">
-          {/* Highlighted Big Official Circular Logo */}
+          {/* Prominent Official Circular Logo */}
           <div className="flex justify-center mb-6">
             <div className="relative group">
-              <div className="absolute -inset-2 rounded-full bg-gradient-to-r from-[#C8A24A]/50 to-[#DFC47D]/30 blur-xl opacity-80 group-hover:opacity-100 transition-opacity" />
               <img
                 src="/images/logo-circle.png"
                 alt="MK Constructions Official Logo"
-                className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full object-cover shadow-[0_10px_35px_rgba(0,0,0,0.85),0_0_30px_rgba(229,169,60,0.7)] border-4 border-[#E5A93C] transform hover:scale-105 transition-all duration-300"
+                className="relative w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-full object-cover shadow-[0_15px_40px_rgba(0,0,0,0.75)] transform hover:scale-105 transition-all duration-300"
               />
             </div>
           </div>

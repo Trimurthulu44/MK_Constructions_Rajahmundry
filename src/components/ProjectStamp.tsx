@@ -27,7 +27,7 @@ export const ProjectStamp: React.FC<ProjectStampProps> = ({
         title="MK Constructions Verified Construction Seal"
       >
         <div
-          className={`${stampSizes[size]} rounded-full p-0.5 bg-[#0B1320] border-2 border-[#E5A93C] shadow-[0_4px_16px_rgba(0,0,0,0.25),0_0_10px_rgba(229,169,60,0.4)] transition-all duration-300 group-hover:scale-110 group-hover:border-[#F3C465] group-hover:rotate-6 flex items-center justify-center`}
+          className={`${stampSizes[size]} rounded-full p-0.5 bg-[#0B1320] shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 flex items-center justify-center`}
         >
           <img
             src="/images/logo-circle.png"
@@ -52,7 +52,7 @@ export const ProjectStamp: React.FC<ProjectStampProps> = ({
       aria-label="MK Constructions Official Circular Stamp"
     >
       <div
-        className={`${stampSizes[size]} rounded-full p-0.5 bg-[#0B1320]/90 backdrop-blur-md border-2 border-[#E5A93C] shadow-[0_6px_24px_rgba(0,0,0,0.7),0_0_12px_rgba(229,169,60,0.5)] transition-all duration-300 flex items-center justify-center`}
+        className={`${stampSizes[size]} rounded-full p-0.5 bg-[#0B1320]/90 backdrop-blur-md shadow-[0_6px_24px_rgba(0,0,0,0.8)] transition-all duration-300 flex items-center justify-center`}
       >
         <img
           src="/images/logo-circle.png"

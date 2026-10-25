@@ -18,7 +18,7 @@ export const Footer: React.FC = () => {
               <img
                 src="/images/logo-circle.png"
                 alt="MK Constructions Logo"
-                className="w-12 h-12 rounded-full object-cover shrink-0 drop-shadow-[0_2px_12px_rgba(229,169,60,0.45)] ring-2 ring-[#E5A93C]/40 group-hover:scale-105 transition-transform"
+                className="w-12 h-12 rounded-full object-cover shrink-0 shadow-md group-hover:scale-105 transition-transform"
               />
               <span className="font-display text-2xl font-black text-white tracking-tight">
                 MK <span className="text-[#E5A93C]">Constructions</span>
